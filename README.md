@@ -1,0 +1,3 @@
+# flaskBlogGB
+
+Educational project
