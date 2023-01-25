@@ -4,13 +4,25 @@
 {% endblock %}
 {% block body %}
     <h1>Articles</h1>
+{#    <div>#}
+{#        <ul>#}
+{#            {% for title in articles %}#}
+{#                <li>#}
+{#                    {{ title }}#}
+{#                </li>#}
+{#            {% endfor %}#}
+{#        </ul>#}
+{#    </div>#}
     <div>
         <ul>
-            {% for title in articles %}
+            {% for article in articles %}
                 <li>
-                    {{ title }}
+                    <a href="{{ url_for('articles_app.details', article_id=article.id) }}">{{ article.title }}</a>
+                    by {{ article.author.user.username }}
                 </li>
             {% endfor %}
         </ul>
+        <hr>
+        <a href="{{ url_for('articles_app.create') }}">Create new</a>
     </div>
 {% endblock %}
