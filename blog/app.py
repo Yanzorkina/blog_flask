@@ -7,6 +7,10 @@ from blog.views.auth import login_manager, auth_app
 from flask_migrate import Migrate
 from blog.security import flask_bcrypt
 from blog.views.authors import authors_app
+from blog.admin import admin
+
+
+
 
 app = Flask(__name__)
 
@@ -55,3 +59,5 @@ def create_tags():
         db.session.add(tag)
     db.session.commit()
     print("created tags")
+
+admin.init_app(app)
