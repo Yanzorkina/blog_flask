@@ -13,11 +13,12 @@ class Article(db.Model):
     body = Column(Text, nullable=False, default="", server_default="")
     dt_created = Column(DateTime, default=datetime.utcnow, server_default=func.now())
     dt_updated = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
-
     author = relationship("Author", back_populates="articles")
-
     tags = relationship(
         "Tag",
         secondary=article_tag_association_table,
         back_populates="articles",
     )
+
+    def __str__(self):
+        return self.title

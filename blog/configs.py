@@ -1,5 +1,7 @@
 import os
 
+FLASK_ADMIN_SWATCH = 'vapor'
+
 
 class BaseConfig(object):
     DEBUG = False
