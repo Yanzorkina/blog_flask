@@ -10,6 +10,16 @@ if __name__ == '__main__':
         debug=True,
     )
 
+@app.cli.command("init-db")
+def init_db():
+   """
+   Run in your terminal:
+   flask init-db
+   """
+   db.create_all()
+   print("done!")
+
+
 @app.cli.command("create-admin")
 def create_admin():
     """
@@ -19,7 +29,7 @@ def create_admin():
     """
     from blog.models import User
 
-    admin = User(username="admin_terminal", is_staff=True)
+    admin = User(username="admin", is_staff=True)
     admin.password = os.environ.get("ADMIN_PASSWORD") or "adminpass"
     db.session.add(admin)
     db.session.commit()
